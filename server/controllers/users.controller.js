@@ -1,15 +1,76 @@
 import { User } from "../models/user.model.js";
+import dotenv from 'dotenv'
+import jwt from 'jsonwebtoken'
+import bcrypt from 'bcrypt'
+
+
+dotenv.config()
+
+const SECRET_KEY = process.env.SECRET_KEY
 
 export const userController = {
+    // login
+    login: async(req, res) => {
+        console.log('in login controller', req.body.email)
+        const user = await User.findOne({ 
+            raw: true,
+            where:{
+                email: req.body.email
+            }
+        });
+
+        if(user === null) {
+            // email not found in users collection
+            return res.status(400).json({message:'invalid credentials'});
+        }
+     
+        // if we made it this far, we found a user with this email address
+        // let's compare the supplied password to the hashed password in the database
+        const correctPassword = await bcrypt.compare(req.body.password, user.password);
+     
+        if(!correctPassword) {
+            // password wasn't a match!
+            return res.status(400).json({message:'invalid credentials'});
+        }
+     
+        // if we made it this far, the password was correct
+        const userToken = jwt.sign({
+            id: user._id
+        }, SECRET_KEY);
+     
+        // note that the response object allows chained calls to cookie and json
+        res
+            .cookie("userToken", userToken, SECRET_KEY, {
+                httpOnly: true
+            })
+            .json({ msg: "success!" });
+    },
+
+    // logout
+    logout: (req, res) => {
+        console.log('clear cookie')
+        res.clearCookie('usertoken');
+        res.sendStatus(200);
+    },
+
+
     // create
-    create: async (req, res) => {
-        try{
-            const newItem = await User.create(req.body)
-            res.status(200).json(newItem)
-        } catch(error){
+    register: async (req, res) => {
+        // register and log in user
+        User.create(req.body)
+        .then(user => {
+            const userToken = jwt.sign({
+                id:user.id
+            }, SECRET_KEY)
+
+            res.cookie('userToken', userToken, SECRET_KEY, {
+                httpOnly: true
+            }).status(200).json(user)
+        })
+        .catch(error => {
             console.log(error)
             res.status(400).json(error)
-        }
+        })
     },
     // read
     getAll: async (req, res) => {

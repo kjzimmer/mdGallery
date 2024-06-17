@@ -1,5 +1,6 @@
 import { DataTypes, Model } from "sequelize";
 import { sequelize } from "../config/config.sequelize.js";
+import bcrypt from 'bcrypt'
 
 // need recipes model that imports from users
 
@@ -36,7 +37,15 @@ export const User = sequelize.define('user',
             }
         }
     },
-    // { timestamps: true }
+    {
+        hooks:{
+            afterValidate: (user) => {
+                if (user.password) {
+                 user.password = bcrypt.hashSync(user.password, 10);
+                }
+            }
+        }
+    }
 )
 
 // the following sync should be removed from production to 
@@ -44,3 +53,4 @@ export const User = sequelize.define('user',
 User.sync({alter:true})
     .then(console.log('User table created'))
     .catch(error => console.log('User table creation error'))
+
