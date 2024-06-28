@@ -34,16 +34,20 @@ export const userController = {
         }
      
         // if we made it this far, the password was correct
-        const userToken = jwt.sign({
-            id: user._id
-        }, SECRET_KEY);
-     
+        const payload = {
+            id: user.id
+        }
+        const options = {
+            // expiresIn: '1d'
+        }
+        const userToken = jwt.sign(payload, SECRET_KEY, options)
+        console.log('token:',userToken)
         // note that the response object allows chained calls to cookie and json
         res
             .cookie("userToken", userToken, SECRET_KEY, {
                 httpOnly: true
             })
-            .json({ msg: "success!" });
+            .json({ msg:'success', token: userToken });
     },
 
     // logout

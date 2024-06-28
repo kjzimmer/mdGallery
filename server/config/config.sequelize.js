@@ -9,17 +9,6 @@ const DB_PASSWORD = process.env.DB_PASSWORD
 const DB_HOST = process.env.DB_HOST
 const DB_PORT = process.env.DB_PORT
 
-console.log(
-    DB_NAME,
-    DB_USER_NAME,
-    DB_PASSWORD,
-    {
-        host: DB_HOST,
-        dialect: 'mysql',
-        port: DB_PORT
-    }
-)
-
 export const sequelize = new Sequelize(
     DB_NAME,
     DB_USER_NAME,
@@ -27,13 +16,13 @@ export const sequelize = new Sequelize(
     {
         host: DB_HOST,
         dialect: 'mysql',
-        port: DB_PORT
+        port: DB_PORT,
+        logging: false
     }
 )
 
 export const dbConnect = () => {
     const conn = sequelize.authenticate()
-    console.log('conn: ', conn)
     conn
     .then( console.log(`Connected to ${DB_NAME}`) )
     .catch( error => console.log(`Failed to connect to ${DB_NAME}`) )

@@ -1,14 +1,18 @@
-import { useState } from 'react'
 import './App.css'
-import { Header } from './components/Header'
+import { Route, Routes } from 'react-router-dom'
+import { UnprotectedRoutes } from './components/UnprotectedRoutes'
+import { ProtectedRoutes } from './components/ProtectedRoutes'
+
+
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <Header/>
-      <h1>nothing here yet</h1>
+    <h1>Melody Debenedictis Fine Art</h1>
+    <Routes>
+      <Route path='/*' element={<UnprotectedRoutes/>}/>
+      <Route path='/admin/*' element={<ProtectedRoutes/>}/>
+    </Routes>
     </>
   )
 }
