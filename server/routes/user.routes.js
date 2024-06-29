@@ -18,17 +18,21 @@ var storage = multer.diskStorage({
 
 const uploads = multer({ storage: storage })
 
+// users router
 export const usersRouter = Router()
-
-
 usersRouter.route('/')
-.get(authenticate, userController.getAll)
+    .get(authenticate, userController.getAll)
 
-usersRouter.route('/:id')
-.get(authenticate, userController.getOne)
-.delete(authenticate, userController.delete)
-.put(authenticate, userController.update)    
+usersRouter.route('/contacts')
+    .get(customersController.get)
+    .post(customersController.contact)
 
+usersRouter.route('/:id')    
+    .get(authenticate, userController.getOne)
+    .delete(authenticate, userController.delete)
+    .put(authenticate, userController.update)    
+    
+// login router
 export const loginRouter = Router()
 loginRouter.route('/login')
     .post(userController.login)
@@ -39,7 +43,7 @@ loginRouter.route('/logout')
 loginRouter.route('/register')
     .post(userController.register)
 
-
+// paintings router
 export const paintingsRouter = Router()
 paintingsRouter.route('/:id')
     .get(paintingController.get)
@@ -56,7 +60,3 @@ paintingsRouter.route('/upload')
 paintingsRouter.route('/images/:image')
     .get(paintingController.getImg)
 
-
-export const customerssRouter = Router()
-    customerssRouter.route('/contact')
-    .get(customersController.contact)

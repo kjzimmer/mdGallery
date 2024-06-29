@@ -116,11 +116,11 @@ export const ArtForm = ({ submitForm }) => {
                         />
                     </Form.Group>
                     <Form.Group>
-                        <Form.Label>Sold</Form.Label>
+                        <Form.Label>Date Completed</Form.Label>
                         <Form.Control
-                            type='checkbox'
-                            name='isSold'
-                            checked={painting.isSold}
+                            type='date'
+                            name='dateCompleted'
+                            checked={painting.dateCompleted}
                             onChange={updateInput}
                         />
                     </Form.Group>

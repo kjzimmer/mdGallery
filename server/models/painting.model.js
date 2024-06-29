@@ -32,8 +32,8 @@ export const Painting = sequelize.define('painting',
             }
         }
         ,
-        isSold: {
-            type: Boolean,
+        dateCompleted: {
+            type: Date,
             allowNull: false
         }
     },

@@ -14,8 +14,6 @@ export function PublicHeader() {
             <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="/artwork">Artwork</Nav.Link>
             <Nav.Link href="/">Exibitions/Awards</Nav.Link>
-            <Nav.Link href="/">The Music</Nav.Link>
-            <Nav.Link href="/">Archives</Nav.Link>
             <Nav.Link href="/contact">Contact</Nav.Link>
             <Nav.Link href="/">Events</Nav.Link>
           </Nav>

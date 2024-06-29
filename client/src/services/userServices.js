@@ -39,6 +39,23 @@ export const userServices = {
         } catch(error){ throw error }
     },
 
+    sendMessage: async (message) => {
+        try{
+            const res = await API_INSTANCE.post('/users/contacts', message)
+            return res.data
+        } catch(error){ throw error }
+    },
+
+    getContact: async () => {
+        try{
+            const res = await API_INSTANCE.get('/users/contacts')
+            return res.data
+        } catch(error){ 
+            error.response.data?.msg ==='session expired' && (window.location = '/')
+            throw error
+        }
+    },
+
     getAll: async () => {
         try{
             const res = await API_INSTANCE.get('/users')

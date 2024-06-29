@@ -3,29 +3,33 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/esm/Button';
 import Col from 'react-bootstrap/esm/Col';
 import Row from 'react-bootstrap/esm/Row';
-// import { userServices } from '../../services/userServices';
+import { userServices } from '../../services/userServices';
+import { useNavigate } from 'react-router-dom';
 // import { useNavigate } from 'react-router-dom';
 
 
 
-export const Contact = () => {
-    const [contact, setContact] = useState({
+export const ContactForm = () => {
+    const [message, setMessage] = useState({
         firstName: '',
         lastName: '',
         email: '',
         message: ''
     })
+    const navigate = useNavigate()
 
     const updateInput = e => {
         const { name, value } = e.target
 
-        setContact(prev => ({ ...prev, [name]: value }))
+        setMessage(prev => ({ ...prev, [name]: value }))
     }
 
     const handleSubmit = (e) => {
         e.preventDefault()
 
-        // customersController.contact(contact)
+        userServices.sendMessage(message)
+        .then(res => navigate('/')) //TODO: add pop-up here to acknowledge message
+        .catch(res => console.log(res)) // TODO: add validation errors display
     }
 
     return (<>
@@ -38,7 +42,7 @@ export const Contact = () => {
                             type='text' 
                             placeholder='First Name' 
                             name='firstName'
-                            value={contact.firstName}
+                            value={message.firstName}
                             onChange={updateInput}
                         />
                     </Form.Group>
@@ -48,7 +52,7 @@ export const Contact = () => {
                             type='text' 
                             placeholder='Last Name'
                             name='lastName'
-                            value={contact.lastName}
+                            value={message.lastName}
                             onChange={updateInput} 
                         />
                     </Form.Group>
@@ -59,7 +63,7 @@ export const Contact = () => {
                         type='email' 
                         placeholder='Email'
                         name='email'
-                        value={contact.email}
+                        value={message.email}
                         onChange={updateInput}
                     /> 
                 </Form.Group>
@@ -71,7 +75,7 @@ export const Contact = () => {
                             rows={3} 
                             placeholder='message' 
                             name='message'
-                            value={contact.message}
+                            value={message.message}
                             onChange={updateInput}
                         />
                     </Form.Group>

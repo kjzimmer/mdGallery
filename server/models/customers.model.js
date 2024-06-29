@@ -22,7 +22,6 @@ export const Contact = sequelize.define('contact',
         email: {
             type: DataTypes.STRING,
             allowNull: false,
-            unique: true,
             validate: {
                 isEmail: true,
             }
@@ -40,6 +39,6 @@ export const Contact = sequelize.define('contact',
 // the following sync should be removed from production to 
 // ensure the database is not accidentally modified by production
 Contact.sync({alter:true})
-    .then(console.log('User table created'))
-    .catch(error => console.log('User table creation error'))
+    .then(console.log('Contact table created'))
+    .catch(error => console.log('Contact table creation error'))
 

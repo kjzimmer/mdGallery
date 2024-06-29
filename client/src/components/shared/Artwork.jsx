@@ -40,7 +40,7 @@ export const Artwork = () => {
     return (<>
         <h2>artwork</h2>
         {
-            paintings.map(({id, title, description, price, isSold, img}) => {
+            paintings.map(({id, title, description, price, dateCompleted, img}) => {
                 return (
                     <Row key={id} className='my-4'>
                         <Col>
@@ -50,13 +50,12 @@ export const Artwork = () => {
                             <h3>{title}</h3>
                             <p>{description}</p>
                             <p>{formatPrice(price)}</p>
-                            <p>{isSold ? 'Sold' : 'Available'}</p>
+                            <p>Date Completed: {dateCompleted ? dateCompleted : 'N/A'}</p>
                             {isAdmin && <Button onClick={() => navigate(`/admin/artwork/edit/${id}`)}>Edit</Button>}
                         </Col>
                     </Row>
-            )
-        }
-        )
+                )
+            })
         }
     </>)
 }

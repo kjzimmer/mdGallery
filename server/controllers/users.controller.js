@@ -2,6 +2,7 @@ import { User } from "../models/user.model.js";
 import dotenv from 'dotenv'
 import jwt from 'jsonwebtoken'
 import bcrypt from 'bcrypt'
+import { Contact } from "../models/customers.model.js";
 
 
 dotenv.config()
@@ -56,7 +57,6 @@ export const userController = {
         res.clearCookie('usertoken');
         res.sendStatus(200);
     },
-
 
     // create
     register: async (req, res) => {

@@ -7,6 +7,7 @@ import { Artwork } from "./shared/Artwork"
 import { AddArt } from "./admin/AddArt"
 import { ArtForm } from "./admin/ArtForm"
 import { paintingServices } from "../services/paintingServices"
+import { Contacts } from "./admin/Contacts"
 
 const PrivateRoutes = () => {
     const token = localStorage.getItem('userToken')
@@ -24,6 +25,7 @@ export const ProtectedRoutes = () => {
             <Route path='/art' element={<Artwork/>}/>
             <Route path='/artwork/add' element={<ArtForm submitForm={paintingServices.create}/>}/>
             <Route path='/artwork/edit/:id' element={<ArtForm submitForm={paintingServices.update}/>}/>
+            <Route path='/contacts/' element={<Contacts/>}/>
             <Route path='/*' element={<Artwork/>}/>
         </Route>
     </Routes>
