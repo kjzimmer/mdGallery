@@ -7,6 +7,7 @@ const SECRET_KEY = process.env.SECRET_KEY
 // TODO: need to add token refresh so expiration time is extended
 
 export const authenticate = (req, res, next) => {
+    console.log('authenticate: ', req.body)
     const authHeader = req.headers['authorization']
     const token = authHeader.split(' ')[1]
     // console.log('decode token: ',decode(token), Date.now()/1000)

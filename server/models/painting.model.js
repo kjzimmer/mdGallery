@@ -34,7 +34,7 @@ export const Painting = sequelize.define('painting',
         ,
         dateCompleted: {
             type: Date,
-            allowNull: false
+            allowNull: true
         }
     },
 )

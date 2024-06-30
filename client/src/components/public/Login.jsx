@@ -33,7 +33,7 @@ export function Login() {
                     <Form.Label>Password</Form.Label>
                     <Form.Control type='password' name='password' placeholder='Password' />
                 </Form.Group>
-                <p>{errors}</p>
+                <p className='text-danger'>{errors}</p>
                 <Button type='submit' className='form'>
                     Submit
                 </Button>

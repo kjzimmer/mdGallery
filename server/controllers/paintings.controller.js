@@ -4,8 +4,6 @@ import fs from 'fs'
 export const paintingController = {
     // upload photo
     upload: async (req, res) => {
-        console.log('in api: ', req.body)
-        console.log('file: ', req.img)
         res.json({ status: 'files received' })
     },
 
@@ -64,7 +62,10 @@ export const paintingController = {
     },
     // delete
     delete: async (req, res) => {
-        const { id } = req.body
+        const { id } = req.params
+
+        console.log('paintings controller deleteId: ', id)
+        // const { id } = req.body
         try {
             const item = await Painting.destroy({where:{id:id}})
             res.status(200).json(item)
@@ -79,7 +80,6 @@ export const paintingController = {
 
         try {
             const file = `${process.cwd()}/uploads/${image}`;
-            console.log('file: ', file)
             res.download(file); // Set disposition and send it.
         }catch (error) {
             console.log(error)

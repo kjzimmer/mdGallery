@@ -47,7 +47,15 @@ export const paintingServices = {
 
     update: async (painting) => {
         try{
+            console.log('painting services updateId: ', painting)
             const res = await API_INSTANCE.put('/', painting)
+        } catch(error){ throw error }
+    },
+
+    delete: async (id) => {
+        try{
+            console.log('painting services delete: ', id)
+            const res = await API_INSTANCE.delete(`/${id}`)
         } catch(error){ throw error }
     }
 }

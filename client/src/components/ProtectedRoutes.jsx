@@ -2,9 +2,7 @@ import { Routes, Route } from "react-router-dom"
 import { Navigate, Outlet } from 'react-router-dom'
 
 import { AdminHeader } from "./admin/AdminHeader"
-import { Admin } from "./admin/Admin"
 import { Artwork } from "./shared/Artwork"
-import { AddArt } from "./admin/AddArt"
 import { ArtForm } from "./admin/ArtForm"
 import { paintingServices } from "../services/paintingServices"
 import { Contacts } from "./admin/Contacts"

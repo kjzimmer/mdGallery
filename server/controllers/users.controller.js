@@ -45,10 +45,10 @@ export const userController = {
         console.log('token:',userToken)
         // note that the response object allows chained calls to cookie and json
         res
-            .cookie("userToken", userToken, SECRET_KEY, {
-                httpOnly: true
-            })
-            .json({ msg:'success', token: userToken });
+            // .cookie("userToken", userToken, SECRET_KEY, {
+            //     httpOnly: true
+            // })
+            .status(200).json({ msg:'success', token: userToken });
     },
 
     // logout
@@ -67,9 +67,12 @@ export const userController = {
                 id:user.id
             }, SECRET_KEY)
 
-            res.cookie('userToken', userToken, SECRET_KEY, {
-                httpOnly: true
-            }).status(200).json(user)
+            res
+            // .cookie('userToken', userToken, SECRET_KEY, {
+            //     httpOnly: true
+            // }).status(200).json(user)
+            .status(200).json({ msg:'success', token: userToken });
+
         })
         .catch(error => {
             console.log(error)

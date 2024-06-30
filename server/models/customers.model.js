@@ -32,6 +32,14 @@ export const Contact = sequelize.define('contact',
             validate: {
                 len: [2]
             }
+        },
+        product: {
+            type: DataTypes.STRING,
+            allowNull: true
+        },
+        productVariation: {
+            type: DataTypes.STRING,
+            allowNull: true
         }
     }
 )

@@ -22,15 +22,15 @@ const uploads = multer({ storage: storage })
 export const usersRouter = Router()
 usersRouter.route('/')
     .get(authenticate, userController.getAll)
-
-usersRouter.route('/contacts')
+    
+    usersRouter.route('/contacts')
     .get(customersController.get)
     .post(customersController.contact)
-
-usersRouter.route('/:id')    
+    
+    usersRouter.route('/:id')    
     .get(authenticate, userController.getOne)
-    .delete(authenticate, userController.delete)
     .put(authenticate, userController.update)    
+    .delete(authenticate, userController.delete)
     
 // login router
 export const loginRouter = Router()
@@ -45,13 +45,13 @@ loginRouter.route('/register')
 
 // paintings router
 export const paintingsRouter = Router()
-paintingsRouter.route('/:id')
-    .get(paintingController.get)
-
 paintingsRouter.route('/')
     .get(paintingController.get)
     .post(authenticate, paintingController.create)
     .put(authenticate, paintingController.update)
+    
+paintingsRouter.route('/:id')
+    .get(paintingController.get)
     .delete(authenticate, paintingController.delete)
 
 paintingsRouter.route('/upload')

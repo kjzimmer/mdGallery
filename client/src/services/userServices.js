@@ -35,13 +35,15 @@ export const userServices = {
     register : async (item) => {
         try{
             const res = await API_INSTANCE.post('/register', item)
-            return res.data
+            localStorage.setItem('userToken', res.data.token)
+            window.location = '/admin'
         } catch(error){ throw error }
     },
 
     sendMessage: async (message) => {
         try{
             const res = await API_INSTANCE.post('/users/contacts', message)
+            console.log('sent msg: ', res.data)
             return res.data
         } catch(error){ throw error }
     },
