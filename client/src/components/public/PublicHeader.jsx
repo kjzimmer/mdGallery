@@ -12,6 +12,7 @@ export function PublicHeader() {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
             <Nav.Link href="/">Home</Nav.Link>
+            <Nav.Link href="/theartist">The Artist</Nav.Link>
             <Nav.Link href="/artwork">Artwork</Nav.Link>
             <Nav.Link href="/contact">Inquiry</Nav.Link>
           </Nav>

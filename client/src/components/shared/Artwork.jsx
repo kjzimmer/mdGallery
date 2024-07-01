@@ -51,7 +51,7 @@ export const Artwork = () => {
     }
 
     return (<>
-        <h2>artwork</h2>
+        <h1>Artwork</h1>
         {
             paintings.map(({ id, title, description, price, dateCompleted, img, productVariation = 0 }, index) => {
                 return (
@@ -85,7 +85,7 @@ export const Artwork = () => {
                                     </Col>
                                     <Col>
                                         {productVariation != 0 ?
-                                            <Button onClick={() => navigate(`/contact/${title}/${productVariation}`)} >Buy</Button>
+                                            <Button onClick={() => navigate(`/contact?title=${title}&paintingId=${id}&productVariation=${productVariation}`)} >Buy</Button>
                                             :
                                             <Button variant='secondary' disabled >Buy</Button>
                                         }

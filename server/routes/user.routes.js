@@ -23,7 +23,7 @@ export const usersRouter = Router()
 usersRouter.route('/')
     .get(authenticate, userController.getAll)
     
-    usersRouter.route('/contacts')
+usersRouter.route('/contacts')
     .get(customersController.get)
     .post(customersController.contact)
     

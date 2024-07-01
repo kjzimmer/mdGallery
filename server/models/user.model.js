@@ -30,7 +30,7 @@ export const User = sequelize.define('user',
         },
         password: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
             validate: {
                 is: /^(?=.*?[0-9])(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[^0-9A-Za-z]).{8,32}$/i,
                 len: [8, 32]
@@ -51,6 +51,6 @@ export const User = sequelize.define('user',
 // the following sync should be removed from production to 
 // ensure the database is not accidentally modified by production
 // User.sync({alter:true})
-//     .then(console.log('User table created'))
-//     .catch(error => console.log('User table creation error'))
+//     .then(console.log('User table modified'))
+//     .catch(error => console.log('User table creation error', error))
 

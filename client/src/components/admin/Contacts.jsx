@@ -11,7 +11,7 @@ export const Contacts = () => {
     useEffect(() => {
         userServices.getContact()
             .then(res => {
-                console.log(res)
+                console.log('list of contactsd', res)
                 setContacts(res)
             })
             .catch(error => console.log('get contacts error: ', error))
@@ -25,17 +25,15 @@ export const Contacts = () => {
                     <th>Date</th>
                     <th>Name</th>
                     <th>Subject</th>
-                    <th>IsRead</th>
                 </tr>
             </thead>
             <tbody>
             {
             contacts.map(contact => (
                 <tr key={contact.id}>
-                    <td>{contact.createdAt}</td>
+                    <td>{(new Date(contact.createdAt)).toLocaleDateString()}</td>
                     <td>{contact.firstName} {contact.lastName}</td>
                     <td>{contact.product ? `${contact. productVariation} of ${contact.product}` : 'General Inquiry'}</td>
-                    <td>??</td>
                 </tr>
 
                 // <Card key={contact.id} style={{ width: '18rem' }}>

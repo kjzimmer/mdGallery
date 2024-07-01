@@ -1,52 +1,51 @@
-import { DataTypes, Model } from "sequelize";
+import { DataTypes, Model, NUMBER, STRING } from "sequelize";
 import { sequelize } from "../config/config.sequelize.js";
+import { User } from "./user.model.js";
+import { Painting } from "./painting.model.js";
 
 // need recipes model that imports from users
 
 export const Contact = sequelize.define('contact',
     {
-        firstName: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                len: [2]
-            }
-        },
-        lastName: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                len: [2]
-            }
-        },
-        email: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                isEmail: true,
-            }
-        },
         message: {
-            type: DataTypes.STRING,
+            type: STRING,
             allowNull: false,
             validate: {
                 len: [2]
             }
-        },
-        product: {
-            type: DataTypes.STRING,
-            allowNull: true
         },
         productVariation: {
-            type: DataTypes.STRING,
+            type: STRING,
             allowNull: true
         }
+        // ,
+        // paintingId:{
+        //     type: NUMBER,
+        //     allowNull: true
+        // },
+        // customerId:{
+        //     type: NUMBER,
+        //     allowNull: true
+        // },
     }
 )
+
+Contact.belongsTo(User, {
+    foreignKey: 'customerId'
+})
+// User.hasMany(Contact)
+
+User.hasMany(Contact, {
+    foreignKey: 'customerId'
+})
+
+Contact.belongsTo(Painting)
+Painting.hasMany(Contact)
+
 
 // the following sync should be removed from production to 
 // ensure the database is not accidentally modified by production
 Contact.sync({alter:true})
-    .then(console.log('Contact table created'))
+    .then(res => console.log('Contact table Modified'))
     .catch(error => console.log('Contact table creation error'))
 

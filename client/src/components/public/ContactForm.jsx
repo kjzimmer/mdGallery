@@ -4,13 +4,18 @@ import Button from 'react-bootstrap/esm/Button';
 import Col from 'react-bootstrap/esm/Col';
 import Row from 'react-bootstrap/esm/Row';
 import { userServices } from '../../services/userServices';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams, useSearchParams } from 'react-router-dom';
 // import { useNavigate } from 'react-router-dom';
 
 
 
 export const ContactForm = () => {
-    const { title, productVariation } = useParams()
+    const [searchParams] = useSearchParams()
+
+    const paintingId = searchParams.get('paintingId')
+    const productVariation = searchParams.get('productVariation')
+    const title = searchParams.get('title')
+
     const [errors, setErrors] = useState({
         firstName: false,
         lastName: false,
@@ -24,7 +29,8 @@ export const ContactForm = () => {
         email: '',
         message: '',
         product: title,
-        productVariation: productVariation
+        productVariation: productVariation,
+        paintingId: paintingId
     })
     const navigate = useNavigate()
 
@@ -69,8 +75,8 @@ export const ContactForm = () => {
         e.preventDefault()
 
         userServices.sendMessage(message)
-            .then(res => navigate('/thankyou')) //TODO: add pop-up here to acknowledge message
-            .catch(res => console.log(res)) // TODO: add validation errors display
+            .then(res => navigate('/thankyou'))
+            .catch(res => console.log(res))
     }
 
     return (<>
@@ -82,6 +88,7 @@ export const ContactForm = () => {
             : <>
                 <h2>Inquiry</h2>
                 <p>Got a Question?</p>
+                <p>Do you have an event you'd like us to speak, play music, display art?</p>
                 <p>Send us a note and we'll get back to you as soon as possible</p>
             </>
         }

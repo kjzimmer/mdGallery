@@ -106,6 +106,25 @@ export const userController = {
             })
         }
     },
+
+    // getByEmailOrCreate: async (userData) => {
+    //     console.log('in getByEmailOrCreate: ', userData)
+    //     User.findOne({where:{email:userData.email}})
+    //     .then(user => {
+    //         if(user != null){
+    //             return user
+    //         }else{
+    //             console.log('user not exist')
+    //             // user does not exist.  create it
+    //             User.create(userData)
+    //             .then(user => console.log('heres the user:',user))
+    //             .catch(error => error)
+    //         }
+    //     })
+    //     .catch(error => error
+    //     )
+    // },
+
     getOne: async (req, res) => {
         const { id } = req.body
         console.log('get one req body', id)

@@ -7,6 +7,7 @@ import { Artwork } from "./shared/Artwork"
 import { Register } from "./public/Register"
 import { ContactForm } from "./public/ContactForm"
 import { Thankyou } from "./public/Thankyou"
+import { TheArtist } from "./public/TheArtist"
 
 
 export const UnprotectedRoutes = () => {
@@ -15,6 +16,7 @@ export const UnprotectedRoutes = () => {
         <Routes>
             <Route path='/' element={<Home/>}/>
             <Route path='/artwork' element={<Artwork/>}/>
+            <Route path='/theartist' element={<TheArtist/>}/>
             <Route path='/contact' element={<ContactForm/>}/>
             <Route path='/contact/:title/:productVariation' element={<ContactForm/>}/>
             <Route path='/thankyou' element={<Thankyou/>}/>
