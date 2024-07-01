@@ -18,15 +18,6 @@ export const Contact = sequelize.define('contact',
             type: STRING,
             allowNull: true
         }
-        // ,
-        // paintingId:{
-        //     type: NUMBER,
-        //     allowNull: true
-        // },
-        // customerId:{
-        //     type: NUMBER,
-        //     allowNull: true
-        // },
     }
 )
 

@@ -63,7 +63,7 @@ export const Artwork = () => {
                             <h3>{title}</h3>
                             <p>{description}</p>
                             <p>{formatPrice(price)}</p>
-                            <p>Date Completed: {dateCompleted ? dateCompleted : 'N/A'}</p>
+                            <p>Date Completed: {dateCompleted ? (new Date(dateCompleted)).toLocaleDateString() : 'N/A'}</p>
                             {isAdmin ?
                                 <Row>
                                     <Col>
