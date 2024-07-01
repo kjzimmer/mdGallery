@@ -10,8 +10,8 @@ function App() {
     <>
     <h1>Melody Debenedictis Fine Art</h1>
     <Routes>
-      <Route path='/*' element={<UnprotectedRoutes/>}/>
       <Route path='/admin/*' element={<ProtectedRoutes/>}/>
+      <Route path='/*' element={<UnprotectedRoutes/>}/>
     </Routes>
     </>
   )

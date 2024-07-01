@@ -27,7 +27,7 @@ export const userServices = {
         try{
             const res = await API_INSTANCE.post('/logout')
             localStorage.removeItem('userToken')
-            window.location = '/'
+            window.location = '/login'
         } catch(error){ throw error }
     },
     

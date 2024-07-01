@@ -15,10 +15,9 @@ export const UnprotectedRoutes = () => {
         <PublicHeader/>
         <Routes>
             <Route path='/' element={<Home/>}/>
-            <Route path='/artwork' element={<Artwork/>}/>
             <Route path='/theartist' element={<TheArtist/>}/>
+            <Route path='/artwork' element={<Artwork/>}/>
             <Route path='/contact' element={<ContactForm/>}/>
-            <Route path='/contact/:title/:productVariation' element={<ContactForm/>}/>
             <Route path='/thankyou' element={<Thankyou/>}/>
             <Route path='/login' element={<Login/>}/>
             <Route path='/register' element={<Register/>}/>
