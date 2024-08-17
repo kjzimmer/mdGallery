@@ -57,7 +57,7 @@ export const Artwork = () => {
                 return (
                     <Row key={id} className='my-4'>
                         <Col>
-                            <Image src={`http://localhost:8010/api/paintings/images/${img}`} fluid />
+                            <Image src={`http://${window.location.hostname}:8020/api/paintings/images/${img}`} fluid />
                         </Col>
                         <Col>
                             <h3>{title}</h3>
