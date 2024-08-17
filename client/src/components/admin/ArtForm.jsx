@@ -129,7 +129,7 @@ export const ArtForm = ({ submitForm }) => {
     return (<>
         <Row key={id} className='my-4'>
             <Col>
-                <Image src={`http://localhost:8010/api/paintings/images/${painting.img}`} fluid id="artPic" alt='Choose file' />
+                <Image src={`http://${window.location.hostname}:8020/api/paintings/images/${painting.img}`} fluid id="artPic" alt='Choose file' />
             </Col>
             <Col>
                 <Form onSubmit={handleSubmit}>
