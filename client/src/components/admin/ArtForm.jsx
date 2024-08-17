@@ -102,13 +102,18 @@ export const ArtForm = ({ submitForm }) => {
         const formData = new FormData()
         formData.append('img', file)
 
-        paintingServices.upload(formData)
-            .then(res => {
-                submitForm(painting)
-                    .then(res => navigate('/admin/artwork'))
-                    .catch(error => console.log(error))
-            })
+console.log('submitting painting')
+        submitForm(painting)
+            .then(res => navigate('/admin/artwork'))
             .catch(error => console.log(error))
+
+        // paintingServices.upload(formData)
+        //     .then(res => {
+        //         submitForm(painting)
+        //             .then(res => navigate('/admin/artwork'))
+        //             .catch(error => console.log(error))
+        //     })
+        //     .catch(error => console.log(error))
     }
 
 
