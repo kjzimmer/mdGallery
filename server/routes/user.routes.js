@@ -9,7 +9,7 @@ import { customersController } from "../controllers/customersController.js";
 
 var storage = multer.diskStorage({
     destination: function (req, file, callback) {
-        callback(null, process.cwd() + "\\uploads");
+        callback(null, `${process.cwd()}/uploads`);
     },
     filename: function (req, file, callback) {
         callback(null, file.originalname);
