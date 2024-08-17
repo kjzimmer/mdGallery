@@ -2,7 +2,7 @@ import axios from 'axios'
 
 
 const API_INSTANCE = axios.create({
-    baseURL: 'http://localhost:8010/api'
+    baseURL: `http://${window.location.hostname}:8020/api`
 })
 
 API_INSTANCE.interceptors.request.use((config) => {
