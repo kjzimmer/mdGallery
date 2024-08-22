@@ -12,7 +12,7 @@ export function AdminHeader() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
-          <Nav.Link href="/admin/artwork/">Art</Nav.Link>
+          <Nav.Link href="/admin/gllery/">Gallery</Nav.Link>
             <Nav.Link href="/admin/artwork/add/">Add Art</Nav.Link>
           <Nav.Link href="/admin/contacts/">Inquiries</Nav.Link>
             <NavDropdown title="Profile" id="basic-nav-dropdown">

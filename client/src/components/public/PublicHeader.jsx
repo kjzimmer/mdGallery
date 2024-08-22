@@ -13,7 +13,7 @@ export function PublicHeader() {
           <Nav className="ms-auto">
             <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="/theartist">The Artist</Nav.Link>
-            <Nav.Link href="/artwork">Artwork</Nav.Link>
+            <Nav.Link href="/gallery">Gallery</Nav.Link>
             <Nav.Link href="/contact">Inquiry</Nav.Link>
           </Nav>
         </Navbar.Collapse>
